@@ -74,5 +74,6 @@ select to_char(sysdate,'DD-MM-YYYY') from dual; --date function converted into s
 select to_char(sysdate, 'Day') from dual;
 
 --Question: Saturday waale din konse employees hire hue hein?
+select * from employees where to_char(hire_date, 'Day') = 'Saturday ';
 select * from employees where to_char(hire_date, 'Day') = 'Wednesday';
 
