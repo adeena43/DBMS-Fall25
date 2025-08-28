@@ -75,5 +75,6 @@ select to_char(sysdate, 'Day') from dual;
 
 --Question: Saturday waale din konse employees hire hue hein?
 select * from employees where to_char(hire_date, 'Day') = 'Saturday ';
+-- length delimeter issue between Wednesday and other short day names
 select * from employees where to_char(hire_date, 'Day') = 'Wednesday';
 
