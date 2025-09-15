@@ -14,7 +14,16 @@
 <img width="443" height="112" alt="image" src="https://github.com/user-attachments/assets/1a6b95d5-dcbb-4ccf-974a-413a90563baa" />
 
 ## Q6.
+<img width="288" height="172" alt="image" src="https://github.com/user-attachments/assets/0a57431b-1c6e-49cd-8461-274ab08999e8" />
+
 ## Q7.
+<img width="300" height="90" alt="image" src="https://github.com/user-attachments/assets/bbdc0642-10ec-446c-9622-7ce7e6215f37" />
+
 ## Q8.
+<img width="252" height="230" alt="image" src="https://github.com/user-attachments/assets/32cafcd5-bb80-4c8d-9165-c9735b642998" />
+
 ## Q9.
+<img width="203" height="89" alt="image" src="https://github.com/user-attachments/assets/95a54786-277b-4324-bd43-44494f68edf1" />
+
 ## Q10.
+<img width="153" height="140" alt="image" src="https://github.com/user-attachments/assets/504faa83-cd0c-4912-bbe4-fe2c561978c7" />
