@@ -1,8 +1,12 @@
 select dept_id, count(*) as number_of_students from Students group by dept_id;
 select dept_id, avg(gpa) as avg_gpa from Student group by dept_id having avg(gpa) > 3.0;
-select Course.course_name, avg(Student.fee_paid) as avg_fee from Student join Enrollment on Student.student_id = Enrollment.student_id 
-join Course on Enrollment.course_id = Course.course_id group by Course.course_name;
-select d.Dept_Name, count(f.Faculty_ID) AS Faculty_Count from Faculty f join Department d on f.Dept_ID = d.Dept_ID group by d.Dept_Name;
+SELECT course_id, AVG(fee_paid) AS avg_fee
+FROM Enrollment e, Student s
+WHERE e.student_id = s.student_id
+GROUP BY course_id;
+SELECT dept_id, COUNT(*) AS faculty_count
+FROM Faculty
+GROUP BY dept_id;
 select faculty_id, faculty_name, salary from Faculty where Salary > (select avg(salary) from Faculty);
 select student_id, student_name, gpa from Student where gpa > any(select gpa from Student where dept_id = 1);
 select Student_ID, student_name, GPA from ( select Student_ID, student_name, GPA  from Student order by GPA desc
