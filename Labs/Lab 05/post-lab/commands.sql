@@ -1,45 +1,10 @@
-CREATE TABLE Department (
-    Dep_ID INT PRIMARY KEY,
-    Dep_Name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE Student (
-    Std_ID INT PRIMARY KEY,
-    Std_Name VARCHAR(100) NOT NULL,
-    Dep_ID INT,
-    GPA DECIMAL(3,2),
-    Fee_Paid DECIMAL(12,2),
-    FOREIGN KEY (Dep_ID) REFERENCES Department(Dep_ID)
-);
-
-create table faculty(
-id int primary key,
-name varchar(20)
-);
-alter table student add (f_id int ,CONSTRAINT fk_emp_dept foreign key(f_id) references faculty(id));
-
-select s.Std_ID,s.Std_Name,s.gpa ,f.name as fac_name from student s inner join faculty f on s.f_id = f.id;--dono k common fetch 
-select s.Std_ID,s.Std_Name,s.gpa ,f.name as fac_name from student s left join faculty f on s.f_id = f.id;--left ka pura table (right common wala srf or uncommon m null)
-select s.Std_ID,s.Std_Name,s.gpa ,f.name as fac_name from student s right join faculty f on s.f_id = f.id;-- right ka pura table (left common..........................)
-alter table faculty add mentot_id int;
---self join 
-update FACULTY set mentot_id=1 where id in (2,3);
-select f.id,f.name ,m.name as mentor_name from faculty f inner join faculty m on f.MENTOT_ID=m.ID;
---cross join returns all possible outcomes
-select s.*,f.name as f_name from student s  cross join FACULTY f;
---full outer join all rows are feched for both left and right complete data of both tables
-select s.*,f.name as f_name from student s  full outer join FACULTY f on s.F_ID=s.STD_ID;
---- in lab task
-CREATE TABLE Employee  (
-    ID INT PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Dep_ID INT,
-    FOREIGN KEY (Dep_ID) REFERENCES Department(Dep_ID)
-);
-select * from EMPLOYEE;
-insert into DEPARTMENT (dep_id,dep_name) values (3,'CY') ;
-insert into employee (id , Name , dep_id) values (6,'Princess Raghib',1) ;
-select e.*,d.dep_name as dep_name from employee e  cross join DEPARTMENT d;--1
-select e.*,d.dep_name as dep_name from employee e  right join DEPARTMENT d on e.dep_id=d.DEP_ID;--2
-select  e.*,d.dep_name as dep_name from employee e  right join DEPARTMENT d on e.dep_id=d.DEP_ID;--7
-select count(*),(select dep_name from DEPARTMENT d where e.dep_id=d.dep_id) as dep_name from employee e group by e.dep_id;--9
+select s.student_name, t.teacher_name, s.city from students s join teachers t on s.city = t.city;
+select e.emp_name as employee, m.emp_name as manager from employees e left join employees m on e.manager_id = m.emp_id;
+select e.emp_name from employees e where e.dept_id is null;
+select d.dept_name, avg(e.salary) as avg_salary from departments d join employees e on d.dept_id = e.dept_id group by d.dept_name having avg(e.salary) > 50000;
+select e.emp_name, e.salary, d.dept_name from employees e join departments d on e.dept_id = d.dept_id where e.salary > (select avg(e2.salary) from employees e2 where e2.dept_id = e.dept_id);
+select d.dept_name from departments d join employees e on d.dept_id = e.dept_id group by d.dept_name having min(e.salary) >= 30000;
+select s.student_name, c.course_name from students s join enrollments e on s.student_id = e.student_id join courses c on e.course_id = c.course_id where s.city = 'Lahore';
+select e.emp_name, e.hire_date, d.dept_name, m.emp_name as manager from employees e left join departments d on e.dept_id = d.dept_id left join employees m on e.manager_id = m.emp_id where e.hire_date between date '2020-01-01' and date '2023-01-01';
+select s.student_name, c.course_name from students s join enrollments e on s.student_id = e.student_id join courses c on e.course_id = c.course_id join teachers t on c.teacher_id = t.teacher_id where t.teacher_name = 'Sir Ali';
+select e.emp_name, m.emp_name as manager, d.dept_name from employees e join employees m on e.manager_id = m.emp_id join departments d on e.dept_id = d.dept_id where e.dept_id = m.dept_id;
