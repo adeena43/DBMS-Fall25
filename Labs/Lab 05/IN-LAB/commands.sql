@@ -138,4 +138,23 @@ insert into orders values (704, 604, TO_DATE('2021-06-22', 'YYYY-MM-DD'));
 select e.emp_name, d.dept_name from employees e cross join departments d;
 select d.dept_name, e.emp_name from departments d left join employees e on d.dept_id = e.dept_id;
 select e.emp_name as employee, m.emp_name as manager from employees e left join employees m on e.manager_id = m.emp_id;
+select e.emp_name as employees from employees e left join emp_projects m on e.emp_id = m.emp_id where m.proj_id is NULL;
+select s.student_name, c.course_name from students s join enrollments e on s.student_id = e.student_id join courses c on e.course_id = c.course_id;
+select c.customer_name, o.order_id, o.order_date from customers c left join orders o on o.customer_id = c.customer_id;
+select e.emp_name, d.dept_name from employees e left join departments d on d.dept_id = e.dept_id;
+select t.teacher_name, c.course_name from teachers t left join courses c on t.teacher_id = c.teacher_id;
+select d.dept_name, count(e.emp_id) as number_of_employees from departments d left join employees e on d.dept_id = e.dept_id group by d.dept_name;
+select s.student_name, c.course_name, t.teacher_name from students s join enrollments e on s.student_id = e.student_id join  courses c on e.course_id = c.course_id join teachers t on c.teacher_id = t.teacher_id;
+
+
+
+
+
+
+
+
+
+
+
+
 
