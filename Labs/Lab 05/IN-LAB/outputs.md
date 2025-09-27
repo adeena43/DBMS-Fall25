@@ -1,3 +1,4 @@
+## In-lab tasks outputs
 # 1.
 <img width="315" height="746" alt="image" src="https://github.com/user-attachments/assets/b375843a-2af0-4460-afbb-45d4abce0894" />
 
