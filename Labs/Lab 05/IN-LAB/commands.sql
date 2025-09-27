@@ -133,7 +133,7 @@ insert into orders values (701, 601, TO_DATE('2021-03-10', 'YYYY-MM-DD'));
 insert into orders values (702, 602, TO_DATE('2021-04-11', 'YYYY-MM-DD'));
 insert into orders values (703, 603, TO_DATE('2021-05-28', 'YYYY-MM-DD'));
 insert into orders values (704, 604, TO_DATE('2021-06-22', 'YYYY-MM-DD'));
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------IN-LAB TASKS------------------------------------------------------------------------------
 select e.emp_name, d.dept_name from employees e cross join departments d;
 select d.dept_name, e.emp_name from departments d left join employees e on d.dept_id = e.dept_id;
