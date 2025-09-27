@@ -1,3 +1,4 @@
+------------------------------------------------------------------POST-LAB-----------------------------------------------------------------
 select s.student_name, t.teacher_name, s.city from students s join teachers t on s.city = t.city;
 select e.emp_name as employee, m.emp_name as manager from employees e left join employees m on e.manager_id = m.emp_id;
 select e.emp_name from employees e where e.dept_id is null;
