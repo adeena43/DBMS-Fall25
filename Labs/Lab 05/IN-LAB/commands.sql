@@ -142,7 +142,9 @@ select e.emp_name as employees from employees e left join emp_projects m on e.em
 select s.student_name, c.course_name from students s join enrollments e on s.student_id = e.student_id join courses c on e.course_id = c.course_id;
 select c.customer_name, o.order_id, o.order_date from customers c left join orders o on o.customer_id = c.customer_id;
 select e.emp_name, d.dept_name from employees e left join departments d on d.dept_id = e.dept_id;
-select t.teacher_name, c.course_name from teachers t left join courses c on t.teacher_id = c.teacher_id;
+SELECT t.teacher_name, c.course_name
+FROM teachers t
+CROSS JOIN courses c;
 select d.dept_name, count(e.emp_id) as number_of_employees from departments d left join employees e on d.dept_id = e.dept_id group by d.dept_name;
 select s.student_name, c.course_name, t.teacher_name from students s join enrollments e on s.student_id = e.student_id join  courses c on e.course_id = c.course_id join teachers t on c.teacher_id = t.teacher_id;
 
