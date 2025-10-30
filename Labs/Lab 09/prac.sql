@@ -75,7 +75,7 @@ create or replace trigger after_ins
 after insert on students for each row
 begin
 insert into student_deleted(student_id, student_name, deleted_by, deleted_on) values
-(:NEW.student_id, :NEW.student_name, SYS_CONTEXT('USERENV', 'SESSION_USSER'), SYSDATE);
+(:NEW.student_id, :NEW.student_name, SYS_CONTEXT('USERENV', 'SESSION_USER'), SYSDATE);
 end;
 /
 
@@ -92,8 +92,8 @@ create or replace trigger prevent_tables
 before drop ON database
 begin
 RAISE_APPLICATION_ERROR(
-num=>-20000,
-msg => 'cannot drop object'
+    num => -20000,
+    msg => 'cannot drop object'
 );
 end;
 /
@@ -101,7 +101,17 @@ DROP table student_logs;
 
 ---------------- TASK 02--------------------
 --- prevent only students table(ONLY) being deleted;
+create or replace trigger prevent_table_student
+before drop ON database
+begin
 
+RAISE_APPLICATION_ERROR(
+    num => -20000,
+    msg => 'cannot drop object'
+);
+end;
+/
+DROP table student_logs;
 
 
 
@@ -125,5 +135,20 @@ ddl_operation varchar(15)
 select * from schema_audit;
 
 set serveroutput on;
+
+create or replace trigger hr_audit_tr
+after ddl on schema
+begin
+insert into schema_audit values(sysdate,
+sys_context('USERENV', 'CCURRENT_USER'), ora_dict_obj_type, ora_dict_obj_name, ora_sysevent);
+end;
+/
+
+create table ddl2_check(
+h_name varchar(20));
+
+drop table ddl2_check;
+
+select * from schema_audit;
 
 
