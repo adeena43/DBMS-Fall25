@@ -104,14 +104,18 @@ DROP table student_logs;
 create or replace trigger prevent_table_student
 before drop ON database
 begin
-
+case e_did
+when 90 then
 RAISE_APPLICATION_ERROR(
     num => -20000,
-    msg => 'cannot drop object'
+    msg => 'cannot drop table'
 );
 end;
 /
 DROP table student_logs;
+
+------------------------ PL-SQL remaining topics -----------------------------
+-- for loop
 
 
 
