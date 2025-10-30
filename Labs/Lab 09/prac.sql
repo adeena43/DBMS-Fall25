@@ -31,3 +31,99 @@ set h_pay = 1233
 where student_id = 3;
 
 select * from students;
+--delete
+create or replace trigger prevent_admin
+before delete on students
+for each row
+begin
+IF :OLD.student_name = 'admin'
+then
+RAISE_APPLICATION_ERROR(-20000, 'you cannot delete admin record');
+end if;
+end;
+/
+delete from students where student_name = 'admin';
+
+create table student_logs(
+student_id int,
+student_name varchar(20),
+inserted_by varchar(20),
+inserted_on date
+);
+
+create or replace trigger after_ins
+after insert on students for each row
+begin
+insert into student_logs(student_id, student_name, inserted_by, inserted_on) values
+(:NEW.student_id, :NEW.student_name, SYS_CONTEXT('USERENV', 'SESSION_USSER'), SYSDATE);
+end;
+/
+
+insert into students(student_id, student_name, h_pay) values (5, 'aqsa', 300);
+select * from student_logs;
+select * from students;
+
+--class task: delete the student and the deleted students should be inserted into a new table called students_deleted
+create table student_deleted(
+student_id int,
+student_name varchar(20),
+deleted_by varchar(20),
+deleted_on date
+);
+
+create or replace trigger after_ins
+after insert on students for each row
+begin
+insert into student_deleted(student_id, student_name, deleted_by, deleted_on) values
+(:NEW.student_id, :NEW.student_name, SYS_CONTEXT('USERENV', 'SESSION_USSER'), SYSDATE);
+end;
+/
+
+insert into students(student_id, student_name, h_pay) values (5, 'aqsa', 300);
+select * from student_logs;
+select * from students;
+
+
+
+
+--------------------------DDL TRIGGERS---------------------------------
+-- prevent table to drop
+create or replace trigger prevent_tables
+before drop ON database
+begin
+RAISE_APPLICATION_ERROR(
+num=>-20000,
+msg => 'cannot drop object'
+);
+end;
+/
+DROP table student_logs;
+
+---------------- TASK 02--------------------
+--- prevent only students table(ONLY) being deleted;
+
+
+
+
+
+
+
+
+
+
+
+
+
+----- Another DDL trigger
+create table schema_audit(
+ddl_date DATE,
+ddl_user varchar2(15),
+object_created varchar2(15),
+object_name varchar2(15),
+ddl_operation varchar(15)
+);
+select * from schema_audit;
+
+set serveroutput on;
+
+
