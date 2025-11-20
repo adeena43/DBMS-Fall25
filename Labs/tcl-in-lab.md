@@ -3,7 +3,20 @@
 
 
 
+
+
+
+
+
+
+
 <img width="441" height="416" alt="image" src="https://github.com/user-attachments/assets/137231c6-56df-42e6-a913-72b3809d4bd1" />
+
+
+
+
+
+
 
 
 
@@ -13,11 +26,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
 these temporarily sve rows can be deleted on rolling back by any other user
 
 
 
+
+
+
+
+
+
 <img width="381" height="186" alt="image" src="https://github.com/user-attachments/assets/cb6d600c-28ac-477d-8eac-d4b7659aad29" />
+
+
+
+
+
+
+
+
 
 
 
@@ -27,11 +63,29 @@ write COMMIT to prevent change revertion
 
 
 
+
+
+
+
+
 <img width="476" height="429" alt="image" src="https://github.com/user-attachments/assets/fd8b2833-a593-48b1-9a01-20c905667c3d" />
 
 
 
+
+
+
+
+
+
+
+
 only one row was committed so it is not reverted on rollback
+
+
+
+
+
 
 
 
@@ -42,7 +96,19 @@ only one row was committed so it is not reverted on rollback
 # SavePoint: marker of any query.
 
 
+
+
+
 <img width="497" height="262" alt="image" src="https://github.com/user-attachments/assets/53ad51c7-f901-47eb-b4fd-de95c7b0bdc1" />
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,7 +125,21 @@ first insert the records, then execute the above savePoint thing(applying marker
 <img width="331" height="156" alt="image" src="https://github.com/user-attachments/assets/c8ea4d35-271b-4e0d-a076-1cc345577a4c" />
 
 
+
+
+
+
+
+
+
+
+
+
 <img width="588" height="543" alt="image" src="https://github.com/user-attachments/assets/24152499-ad3d-4d6b-a5b2-503f5ef40947" />
+
+
+
+
 
 
 
@@ -74,7 +154,13 @@ ROLLBACK To First
 
 
 
+
+
+
+
 <img width="272" height="149" alt="image" src="https://github.com/user-attachments/assets/abf99356-e8b6-4a3a-ae39-504a87726700" />
+
+
 
 
 
