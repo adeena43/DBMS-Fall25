@@ -1,4 +1,4 @@
-use inventoryDB
+use inventory
 db.furniture.insertMany([
   { name: "Table", color: "Brown", dimensions: [40, 80] },
   { name: "Chair", color: "Black", dimensions: [12, 18] },
